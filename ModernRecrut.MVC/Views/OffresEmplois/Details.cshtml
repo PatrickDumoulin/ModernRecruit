@@ -1,0 +1,46 @@
+﻿@model ModernRecrut.MVC.Models.OffreEmploi
+
+@{
+    ViewData["Title"] = "Offre d'emploi - Détails";
+}
+
+<div class="container mt-5">
+    <h1 class="mb-4">Détails de l'offre d'emploi</h1>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-12">
+            <dl class="row">
+                <dt class="col-sm-2">Identifiant</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.Id)</dd>
+
+                <dt class="col-sm-2">Nom</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.Nom)</dd>
+
+                <dt class="col-sm-2">Poste</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.Poste)</dd>
+
+                <dt class="col-sm-2">Description</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.Description)</dd>
+
+                <dt class="col-sm-2">Date de début</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.DateDebut)</dd>
+
+                <dt class="col-sm-2">Date de fin</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.DateFin)</dd>
+            </dl>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="mt-4">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary mx-1">Modifier</a>
+        
+        <a asp-action="Create" asp-controller="Favoris" asp-route-id="@Model.Id" class="btn btn-primary mx-1">Ajouter aux favoris</a>
+        <a asp-action="Postuler" asp-controller="Postulations" asp-route-id="@Model.Id" class="btn btn-success mx-1">Postuler</a>
+        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger mx-1">Supprimer</a>
+        <a asp-action="Index" class="btn btn-secondary mx-1">Retour aux offres d'emplois</a>
+        
+    </div>
+</div>

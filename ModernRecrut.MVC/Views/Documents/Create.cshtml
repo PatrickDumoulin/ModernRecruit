@@ -1,0 +1,45 @@
+﻿@model ModernRecrut.MVC.Models.DocumentModel
+
+@{
+    ViewData["Title"] = "Ajouter un document";
+}
+
+<div class="container mt-5">
+    <h1 class="mb-4">Ajouter un document</h1>
+
+    <hr />
+
+    <div class="row">
+        <div class="col-md-6">
+            <form method="post" enctype="multipart/form-data" asp-controller="Documents" asp-action="Create">
+                <!-- Type de document -->
+                <div class="form-group mb-3">
+                    <label for="Type">Type de Document</label>
+                    <select asp-for="Type" class="form-control">
+                        <option value="CV">CV</option>
+                        <option value="LettreDeMotivation">Lettre de Motivation</option>
+                        <option value="Diplomes">Diplômes</option>
+                    </select>
+                </div>
+
+                <!-- Champ pour télécharger un fichier -->
+                <div class="form-group mb-3">
+                    <label for="file">Télécharger Document</label>
+                    <input type="file" name="file" class="form-control" accept=".pdf,.doc,.docx" />
+                </div>
+
+                <!-- Bouton pour enregistrer -->
+                <div class="form-group">
+                    <input type="submit" value="Enregistrer" class="btn btn-primary w-100" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Lien de retour -->
+    <div class="mt-4">
+        <a asp-action="Index" class="btn btn-secondary">Retour à la liste</a>
+    </div>
+</div>
+
+

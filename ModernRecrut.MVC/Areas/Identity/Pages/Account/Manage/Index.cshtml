@@ -1,0 +1,65 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Profil";
+    ViewData["ActivePage"] = ManageNavPages.Index;
+}
+
+<div class="container">
+    <h3 class="mb-4">@ViewData["Title"]</h3>
+
+    <partial name="_StatusMessage" for="StatusMessage" />
+
+    <div class="row">
+        <div class="col-md-6">
+            <form id="profile-form" method="post">
+                <!-- Affichage des erreurs -->
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <!-- Nom d'utilisateur (désactivé) -->
+                <div class="form-floating mb-3">
+                    <input asp-for="Username" class="form-control" disabled />
+                    <label asp-for="Username">Nom d'utilisateur</label>
+                </div>
+
+                <!-- Numéro de téléphone -->
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.PhoneNumber" class="form-control" />
+                    <label asp-for="Input.PhoneNumber">Numéro de téléphone</label>
+                    <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                </div>
+
+                <!-- Nom -->
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Nom" class="form-control" autocomplete="new-password" aria-required="true" />
+                    <label asp-for="Input.Nom">Nom</label>
+                    <span asp-validation-for="Input.Nom" class="text-danger"></span>
+                </div>
+
+                <!-- Prénom -->
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Prenom" class="form-control" autocomplete="new-password" aria-required="true" />
+                    <label asp-for="Input.Prenom">Prénom</label>
+                    <span asp-validation-for="Input.Prenom" class="text-danger"></span>
+                </div>
+
+                <!-- Type (Employé ou Candidat) -->
+                <div class="form-floating mb-3">
+                    <select asp-for="Input.Type" class="form-control" autocomplete="new-password" aria-required="true">
+                        <option value="Employe">Employé</option>
+                        <option value="Candidat">Candidat</option>
+                    </select>
+                    <label asp-for="Input.Type">Type</label>
+                    <span asp-validation-for="Input.Type" class="text-danger"></span>
+                </div>
+
+                <!-- Bouton de soumission -->
+                <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Enregistrer</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

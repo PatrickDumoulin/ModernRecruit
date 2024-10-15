@@ -1,0 +1,19 @@
+﻿
+@model CodeStatusViewModel
+@{
+    ViewData["Title"] = "404 - Page non trouvée";
+   
+}
+
+<div class="text-center">
+    <h1 class="display-4">404 - Page non trouvée</h1>
+    <img src="~/images/404.png" alt="404"  />
+
+    <p class="lead">@Model.MessageErreur</p>
+
+    <p>
+    <p><a href="@Url.Action("Index", "Home")">Retourner à l'acceuil</a></p>
+    
+</div>
+
+

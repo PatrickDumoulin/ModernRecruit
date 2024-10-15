@@ -1,0 +1,15 @@
+﻿@model CodeStatusViewModel
+@{
+    ViewData["Title"] = "CodeStatus";
+}
+
+<h1 class="text-danger">Erreur HTTP @Model.CodeStatus</h1>
+<h2 class="text-danger">@Model.MessageErreur</h2>
+
+@if (Model.MontrerIdRequete)
+{
+    <p>
+        <strong>Request ID:</strong> <code>@Model.IdRequete</code>
+    </p>
+}
+

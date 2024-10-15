@@ -1,0 +1,55 @@
+﻿@inject SignInManager<Utilisateur> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <ul class="nav nav-pills flex-column">
+            <!-- Profil -->
+            <li class="nav-item mb-2">
+                <a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">
+                    <i class="fas fa-user"></i> Profil
+                </a>
+            </li>
+
+            <!-- Email -->
+            <li class="nav-item mb-2">
+                <a class="nav-link @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+            </li>
+
+            <!-- Changer le mot de passe -->
+            <li class="nav-item mb-2">
+                <a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">
+                    <i class="fas fa-key"></i> Mot de passe
+                </a>
+            </li>
+
+            <!-- Connexions externes (si disponible) -->
+            @if (hasExternalLogins)
+            {
+                <li id="external-logins" class="nav-item mb-2">
+                    <a id="external-login" class="nav-link @ManageNavPages.ExternalLoginsNavClass(ViewContext)" asp-page="./ExternalLogins">
+                        <i class="fas fa-external-link-alt"></i> Connexions externes
+                    </a>
+                </li>
+            }
+
+            @* <!-- Authentification à deux facteurs -->
+            <li class="nav-item mb-2">
+                <a class="nav-link @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)" id="two-factor" asp-page="./TwoFactorAuthentication">
+                    <i class="fas fa-shield-alt"></i> Authentification à deux facteurs
+                </a>
+            </li>
+
+            <!-- Données personnelles -->
+            <li class="nav-item">
+                <a class="nav-link @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" asp-page="./PersonalData">
+                    <i class="fas fa-user-shield"></i> Données personnelles
+                </a>
+            </li> *@
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+﻿@model Microsoft.AspNetCore.Identity.IdentityRole
+@{
+    ViewData["Title"] = "Ajouter un rôle";
+}
+
+<div class="container mt-5">
+    <h1 class="mb-4">Ajouter un rôle</h1>
+
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Create">
+                <!-- Champ pour le nom du rôle -->
+                <div class="form-group mb-3">
+                    <label asp-for="Name" class="control-label">Nom du rôle</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <!-- Bouton d'enregistrement -->
+                <div class="form-group">
+                    <input type="submit" value="Enregistrer" class="btn btn-primary w-100" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Lien de retour -->
+    <div class="mt-4">
+        <a asp-action="Index" class="btn btn-secondary">Retour à la liste des rôles</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

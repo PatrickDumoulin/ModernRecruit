@@ -1,0 +1,41 @@
+﻿@model ModernRecrut.MVC.Models.Postulation
+
+@{
+    ViewData["Title"] = "Détails de la postulation";
+}
+
+<div class="container mt-5">
+    <h1 class="mb-4">Détails de la postulation</h1>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-12">
+            <dl class="row">
+                <dt class="col-sm-2">Identifiant</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.Id)</dd>
+
+                <dt class="col-sm-2">Identifiant du candidat</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.IdCandidat)</dd>
+
+
+                <dt class="col-sm-2">Offre d'emploi</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.OffreDEmploiId)</dd>
+
+                <dt class="col-sm-2">Prétention salariale</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.PretentionSalariale)</dd>
+
+                <dt class="col-sm-2">Date de disponibilité</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.DateDisponibilite)</dd>
+            </dl>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="mt-4">
+        @* <a asp-action="Noter" asp-route-id="@Model.Id" class="btn btn-sm btn-outline-success mx-1">Noter</a> *@
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-primary mx-1">Modifier</a>
+        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-sm btn-danger mx-1">Supprimer</a>
+        <a asp-action="ListePostulations" class="btn btn-sm btn-secondary mx-1">Retour à la liste des postulations</a>
+    </div>
+</div>

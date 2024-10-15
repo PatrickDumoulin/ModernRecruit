@@ -1,0 +1,38 @@
+﻿@model ModernRecrut.MVC.Models.Postulation
+
+@{
+    ViewData["Title"] = "Supprimer une Postulation";
+}
+
+<div class="container mt-5">
+    <h1 class="mb-4">Supprimer une Postulation</h1>
+
+    <h3 class="text-danger">Êtes-vous sûr de vouloir supprimer cette postulation ?</h3>
+
+    <div class="mt-4">
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-3">Identifiant</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Id)</dd>
+
+            <dt class="col-sm-3">Candidat</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.IdCandidat)</dd>
+
+            <dt class="col-sm-3">Offre d'Emploi</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.OffreDEmploiId)</dd>
+
+            <dt class="col-sm-3">Prétention Salariale</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.PretentionSalariale)</dd>
+
+            <dt class="col-sm-3">Date de Disponibilité</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.DateDisponibilite)</dd>
+        </dl>
+    </div>
+
+    <div class="mt-4">
+        <form asp-action="Delete">
+            <input type="submit" value="Supprimer" class="btn btn-danger" />
+            <a asp-action="ListePostulations" class="btn btn-secondary ml-2">Retour à la liste des postulations</a>
+        </form>
+    </div>
+</div>

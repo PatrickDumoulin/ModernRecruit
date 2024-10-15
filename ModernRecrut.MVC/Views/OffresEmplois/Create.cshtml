@@ -1,0 +1,67 @@
+﻿@model ModernRecrut.MVC.Models.OffreEmploi
+
+@{
+    ViewData["Title"] = "Offre d'emploi - Créé";
+}
+
+<h1 class="mb-4">Création d'une offre d'emploi</h1>
+<hr />
+
+<div class="row just">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <!-- Nom -->
+            <div class="form-group mb-3">
+                <label asp-for="Nom" class="control-label">Nom</label>
+                <input asp-for="Nom" class="form-control" />
+                <span asp-validation-for="Nom" class="text-danger"></span>
+            </div>
+
+            <!-- Poste -->
+            <div class="form-group mb-3">
+                <label asp-for="Poste" class="control-label">Poste</label>
+                <input asp-for="Poste" class="form-control" />
+                <span asp-validation-for="Poste" class="text-danger"></span>
+            </div>
+
+            <!-- Description -->
+            <div class="form-group mb-3">
+                <label asp-for="Description" class="control-label">Description</label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <!-- Date de début -->
+            <div class="form-group mb-3">
+                <label asp-for="DateDebut" class="control-label">Date de début</label>
+                <input asp-for="DateDebut" class="form-control" value="@DateTime.Today.ToString("yyyy-MM-dd")" />
+                <span asp-validation-for="DateDebut" class="text-danger"></span>
+            </div>
+
+            <!-- Date de fin -->
+            <div class="form-group mb-3">
+                <label asp-for="DateFin" class="control-label">Date de fin</label>
+                <input asp-for="DateFin" class="form-control" />
+                <span asp-validation-for="DateFin" class="text-danger"></span>
+            </div>
+
+            <!-- Bouton de création -->
+            <div class="form-group">
+                <input type="submit" value="Créer" class="btn btn-primary w-100" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Lien de retour -->
+<div class="mt-4">
+    <a asp-action="Index" class="btn btn-secondary">Retour aux offres d'emplois</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

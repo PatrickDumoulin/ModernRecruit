@@ -1,0 +1,63 @@
+﻿@page
+@model EnableAuthenticatorModel
+@{
+    ViewData["Title"] = "Configurer l'application d'authentification";
+    ViewData["ActivePage"] = ManageNavPages.TwoFactorAuthentication;
+}
+
+<partial name="_StatusMessage" for="StatusMessage" />
+
+<div class="container mt-5">
+    <h3 class="mb-4">@ViewData["Title"]</h3>
+
+    <div>
+        <p>Pour utiliser une application d'authentification à deux facteurs, suivez les étapes suivantes :</p>
+        <ol class="list">
+            <!-- Étape 1 : Téléchargez l'application d'authentification -->
+            <li>
+                <p>
+                    Téléchargez une application d'authentification à deux facteurs comme Microsoft Authenticator pour
+                    <a href="https://go.microsoft.com/fwlink/?Linkid=825072">Android</a> et
+                    <a href="https://go.microsoft.com/fwlink/?Linkid=825073">iOS</a>, ou Google Authenticator pour
+                    <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&amp;hl=fr">Android</a> et
+                    <a href="https://apps.apple.com/fr/app/google-authenticator/id388497605">iOS</a>.
+                </p>
+            </li>
+
+            <!-- Étape 2 : Scannez le QR Code ou entrez la clé manuellement -->
+            <li>
+                <p>Scannez le QR Code ou entrez cette clé <kbd>@Model.SharedKey</kbd> dans votre application d'authentification à deux facteurs. Les espaces et la casse n'ont pas d'importance.</p>
+                <div class="alert alert-info">Apprenez à <a href="https://go.microsoft.com/fwlink/?Linkid=852423">activer la génération de QR code</a>.</div>
+                <div id="qrCode"></div>
+                <div id="qrCodeData" data-url="@Model.AuthenticatorUri"></div>
+            </li>
+
+            <!-- Étape 3 : Entrez le code de vérification -->
+            <li>
+                <p>
+                    Une fois que vous avez scanné le QR code ou entré la clé ci-dessus, votre application d'authentification à deux facteurs vous fournira un code unique. Entrez ce code dans la case de confirmation ci-dessous.
+                </p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <form id="send-code" method="post">
+                            <!-- Code de vérification -->
+                            <div class="form-floating mb-3">
+                                <input asp-for="Input.Code" class="form-control" autocomplete="off" />
+                                <label asp-for="Input.Code" class="control-label form-label">Code de vérification</label>
+                                <span asp-validation-for="Input.Code" class="text-danger"></span>
+                            </div>
+
+                            <!-- Bouton de validation -->
+                            <button type="submit" class="w-100 btn btn-lg btn-primary">Vérifier</button>
+                            <div asp-validation-summary="ModelOnly" class="text-danger mt-2"></div>
+                        </form>
+                    </div>
+                </div>
+            </li>
+        </ol>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,68 @@
+﻿@model ModernRecrut.MVC.Models.Postulation
+
+@{
+    ViewData["Title"] = "Modification de la postulation";
+
+    @* Style messages d'erreurs *@
+    <style>
+        .Errors {
+            color: red;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+    </style>
+}
+
+<div class="container mt-5">
+    <h1 class="mb-4">Modification de la postulation</h1>
+    <hr />
+
+    @* Messages d'erreurs *@
+    <div class="Errors">
+        @Html.ValidationMessage("Error")
+        @Html.ValidationMessage("all")
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <!-- Champ caché pour l'Id -->
+                <input asp-for="Id" type="hidden" />
+
+                <!-- Champ caché pour IdCandidat -->
+                <input asp-for="IdCandidat" type="hidden" />
+
+                <!-- Champ caché pour OffreDEmploiId -->
+                <input asp-for="OffreDEmploiId" type="hidden" />
+
+                <!-- Prétention salariale -->
+                <div class="form-group mb-3">
+                    <label asp-for="PretentionSalariale" class="control-label">Prétention salariale</label>
+                    <input asp-for="PretentionSalariale" class="form-control" />
+                    <span asp-validation-for="PretentionSalariale" class="text-danger"></span>
+                </div>
+
+                <!-- Date de disponibilité -->
+                <div class="form-group mb-3">
+                    <label asp-for="DateDisponibilite" class="control-label">Date de disponibilité</label>
+                    <input asp-for="DateDisponibilite" class="form-control" />
+                    <span asp-validation-for="DateDisponibilite" class="text-danger"></span>
+                </div>
+
+                <!-- Bouton de soumission -->
+                <div class="form-group">
+                    <input type="submit" value="Modifier" class="btn btn-primary w-100" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Lien de retour -->
+    <div class="mt-4">
+        <a asp-action="ListePostulations" class="btn btn-secondary">Retour à la liste des postulations</a>
+    </div>
+</div>
+
+

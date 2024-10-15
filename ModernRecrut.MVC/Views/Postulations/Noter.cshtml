@@ -1,0 +1,49 @@
+﻿@model ModernRecrut.MVC.DTO.RequeteNote
+
+@{
+    ViewData["Title"] = "Noter";
+    @* Style messages d'erreurs *@
+    <style>
+        .Errors {
+            color: red;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+    </style>
+}
+
+<h1>Noter</h1>
+@* Messages d'erreurs *@
+
+<div class="Errors">
+    @Html.ValidationMessage("all")
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Noter">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="IdPostulation" class="form-control" type="hidden"/>
+                <span asp-validation-for="IdPostulation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Note" class="control-label"></label>
+                <input asp-for="Note" class="form-control" type="text" />
+                <span asp-validation-for="Note" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="NomEmeteur" class="form-control" type="hidden" />
+                <span asp-validation-for="NomEmeteur" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="ListePostulations">Retour à la liste des postulations</a>
+</div>
+
